@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Possessive Pondatii 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  text-align:center;
+  background: linear-gradient(to right,#ff9a9e,#fad0c4);
+  padding:40px 20px;
+  overflow:hidden;
+  transition:0.5s;
+}
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  margin:10px;
+  cursor:pointer;
+}
+#msg{
+  font-size:20px;
+  margin-top:20px;
+  min-height:120px;
+  white-space:pre-line;
+}
+.heart{
+  position:fixed;
+  color:red;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{top:-10%; opacity:1;}
+  100%{top:100%; opacity:0;}
+}
+.shake{
+  animation:shake 0.4s;
+}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-6px);}
+  50%{transform:translateX(6px);}
+  75%{transform:translateX(-6px);}
+  100%{transform:translateX(0);}
+}
+.blush{
+  font-size:60px;
+  animation:pop 1s infinite alternate;
+}
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+</style>
+</head>
+<body>
+
+<h1>😔 Naa Thappu Panniten</h1>
+<button onclick="start()">Open pannalama?</button>
+
+<div id="msg"></div>
+
+<audio id="bgm" loop>
+  <source src="nee-kavithaigala.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function typeText(text, i=0){
+  if(i < text.length){
+    document.getElementById("msg").innerHTML += text.charAt(i);
+    setTimeout(()=>typeText(text, i+1),40);
+  }
+}
+
+function start(){
+  const music = document.getElementById("bgm");
+  music.volume = 0.3;
+  music.play();
+
+  document.getElementById("msg").innerHTML="";
+  let text="Unaku already pudikala nu therinjirundhum naan en ex bestie kooda photo eduthu status poten...\n\nAdhu unaku evlo hurt aagirukum nu ippo puriyudhu.\n\nNaa defend panna maaten.\nNaa thappu panniten.\n\nNee dhaan en priority ❤️\n\n";
+  typeText(text);
+
+  setTimeout(()=>{
+    document.getElementById("msg").innerHTML += 
+    "\n\n😊 Parava illa   😡 Innum kovam";
+    document.getElementById("msg").innerHTML += 
+    "<br><br><button onclick='forgive()'>😊 Parava illa</button>" +
+    "<button onclick='angry()'>😡 Innum kovam</button>";
+  },6000);
+}
+
+function angry(){
+  document.body.classList.add("shake");
+  document.getElementById("msg").innerHTML =
+  "😔 Seri... nee kovapadalam.\n\n" +
+  "Aana naan unna lose panna bayama iruku.\n\n" +
+  "Nee possessive ah iruka nu enaku theriyum...\n" +
+  "Adhu enaku pidikum.\n\n" +
+  "Adhu en mela unaku evlo importance iruku nu kaatum.\n\n" +
+  "<br><br><button onclick='finalChance()'>Last ah keluu...</button>";
+}
+
+function finalChance(){
+  document.getElementById("msg").innerHTML =
+  "Unaku insecure feel panna vaika maaten.\n\n" +
+  "Unaku bayam varama irukanum.\n\n" +
+  "Nee dhaan en ponnu.\nNee dhaan en world.\n\n" +
+  "<br><br><button onclick='forgive()'>Ippo konjam sirichiduva? 🥺</button>";
+}
+
+function forgive(){
+  document.body.style.background="linear-gradient(to right,#ff758c,#ff7eb3)";
+  document.getElementById("bgm").volume = 1.0;
+
+  document.getElementById("msg").innerHTML=
+  "💖 Ithu dhaan en pondatii 💖\n\n" +
+  "Un possessiveness enaku pidikum di...\n" +
+  "Ana unaku insecure feel panna vaika maaten.\n\n" +
+  "Nee siricha dhaan naan happy 🥰\n\n" +
+  "Love Youuuu ❤️\n\n" +
+  "<div class='blush'>🥰</div>";
+
+  setInterval(createHeart,300);
+}
+
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),3000);
+}
+
+</script>
+
+</body>
+</html>
